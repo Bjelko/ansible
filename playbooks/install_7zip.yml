@@ -12,9 +12,9 @@
 
    - name: Run ps1
      become: true
-     become_user: .\plantadmin_pu
+     become_user: tiretech2\bielikp1
      vars:
-      ansible_become_password: Pn3umat1ka
+      ansible_become_password: "{{ pass }}"
      ansible.windows.win_command: 'powershell.exe -executionpolicy bypass -File "c:\tmp\install_7zip.ps1"'
      register: result
      ignore_errors: false
