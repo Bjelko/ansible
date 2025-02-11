@@ -1,0 +1,7 @@
+---
+- hosts: all
+  tasks:
+   - name: Copy a single file
+     ansible.windows.win_copy:
+      src: ~/ansible/ansible.cfg
+      dest: c:\temp\ansb.cfg
