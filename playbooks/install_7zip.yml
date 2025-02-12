@@ -5,19 +5,18 @@
   become_method: ansible.builtin.runas
 
   tasks:
-   - name: Copy ps1 file
-     ansible.windows.win_copy:
-      src: ~/ansible/ps/install_7zip.ps1
-      dest: c:\tmp\install_7zip.ps1
-
-   - name: Run ps1
-     become: true
-     become_user: tiretech2\bielikp1
-     vars:
-      ansible_become_password: "{{ pass }}"
-     ansible.windows.win_command: 'powershell.exe -executionpolicy bypass -File "c:\tmp\install_7zip.ps1"'
-     register: result
-     ignore_errors: false
-   - name: Display output
-     ansible.builtin.debug:
-      var: result
+    - name: Copy ps1 file
+      ansible.windows.win_copy:
+        src: ~/ansible/ps/install_7zip.ps1
+        dest: c:\tmp\install_7zip.ps1
+    - name: Run ps1
+      become: true
+      become_user: tiretech2\bielikp1
+      vars:
+        ansible_become_password: "{{ pwd }}"
+      ansible.windows.win_command: 'powershell.exe -executionpolicy bypass -File "c:\tmp\install_7zip.ps1"'
+      register: result
+      ignore_errors: false
+    - name: Display output
+      ansible.builtin.debug:
+        var: result
