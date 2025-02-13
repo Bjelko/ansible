@@ -1,4 +1,3 @@
-
 Prihlasovnanie cez > SSHkeys. Treba nejako dostať svoj *.pub súbor na stroj a pridať!!! do c:\ProgramData\administrators_authorized_keys, pridať nie prepísať.. Napr. https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement#deploying-the-public-key
 
 Vytvoriť si svoj .pass.yml kde bude heslo k ```ansible vault``` skopirovať na vhodné miesto a upraviť ```ansible.cfg```
@@ -14,17 +13,16 @@ moje_heslo_k_Vaultu
 ```
 Upraviť prístupové práva k súboru ``` chmod 600 ~/.pass.yml```. Súbor bude čitatelný len pre uživatateľa a ```root```
 
-Vytvorenie vaultu so súkromnými údajmi -> zašifrovaný súbor
+Vytvorenie vaultu so súkromnými údajmi /ideálne ADM účet, resp. účet ktorý môže nazrieť do AC_Repository zo stroja/ -> zašifrovaný súbor
 ```
 ansible-vault create ~/.secret.yml 
 ```
-ideálne ADM účet
 ```
 ---
 pwd=Moj3_hesl0
 usr=meno@domena
 ```
-Premenné ```pass``` a ```usr``` sa potom môžu používať v playbookoch
+Premenné ```pwd``` a ```usr``` sa potom môžu používať v playbookoch
 ```
  - name: Run ps1
       become: true
@@ -82,3 +80,5 @@ Skupina ```trial```
 PU1
 ```
 pozri ```inventory/*.ini```
+
+
