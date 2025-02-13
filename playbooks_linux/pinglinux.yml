@@ -4,6 +4,7 @@
   gather_facts: true
   tasks:
     - name: Ping
+      become: true
       ansible.builtin.ping:
     - name: Display output
       ansible.builtin.debug:

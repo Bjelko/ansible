@@ -1,0 +1,13 @@
+---
+- name: Update
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Update and upgrade apt packages
+      become_method: ansible.builtin.runas
+      become: true
+      become_user: "{{ edge_usr }}"
+
+      ansible.builtin.apt:
+        update_cache: true
+        upgrade: true
