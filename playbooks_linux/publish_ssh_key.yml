@@ -1,0 +1,10 @@
+---
+- name: Send SSH public key to host
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Send SSH public key to host
+      ansible.posix.authorized_key:
+        user: "{{ usr }}"  # uzivatel na vzdialenom pc
+        state: present
+        key: "{{ lookup('file', lookup('env', 'HOME') + '/.ssh/id_ed25519.pub') }}"
